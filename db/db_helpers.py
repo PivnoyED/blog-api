@@ -2,15 +2,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine("sqlite:///./archive_database.db")
+SQLALCHEMY_DATABASES_URL = "sqlite:///./arch_db.db"
 
-Base = declarative_base()
+engine = create_engine(SQLALCHEMY_DATABASES_URL, connect_args={"check_same_thread": False})
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-async def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+Base = declarative_base()

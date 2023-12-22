@@ -8,9 +8,9 @@ class Arch_doc_cards(Base):
     __tablename__="arch_doc_cards"
     
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    year: Mapped[int]
-    number:Mapped[int] # номер дела
-    reg_date: Mapped[datetime]
+    year: Mapped[int] = mapped_column(comment='Год')
+    number:Mapped[int] = mapped_column(comment='Номер дела')
+    reg_date: Mapped[datetime] = mapped_column(comment='Дата регистрации')
     literal: Mapped[str]
     reg_number: Mapped[str]
     q_initiator: Mapped[str]
@@ -58,23 +58,23 @@ class Arch_doc_cards(Base):
 class Arch_sq(Base):
     __tablename__="arch_sq"
     
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    year: Mapped[int]
+    id: Mapped[int] = mapped_column(primary_key=True)
+    year: Mapped[int] = mapped_column(comment='Год')
     cur_number: Mapped[int]
     
 class Arch_dict(Base):
     __tablename__="arch_dict"
     
+    id: Mapped[int] = mapped_column(primary_key=True)
     type_d: Mapped[int]
     value: Mapped[int]
     text: Mapped[str]
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     n_order: Mapped[int]
 
 class Arch_doc_signs(Base):
     __tablename__="arch_doc_signs"
     
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
     sign: Mapped[int]
     ex_sign: Mapped[int]
     id_card: Mapped[int]
@@ -82,7 +82,7 @@ class Arch_doc_signs(Base):
 class Arch_doc_signs_new(Base):
     __tablename__="arch_doc_signs_new"
     
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
     sign_group: Mapped[int] 
     sign_child: Mapped[int]
     ex_sign: Mapped[int]
@@ -91,7 +91,7 @@ class Arch_doc_signs_new(Base):
 class Arch_doc_signs_new2(Base):
     __tablename__="arch_doc_signs_new2"
     
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
     sign_group: Mapped[int] 
     sign_child: Mapped[int]
     ex_sign: Mapped[int]
@@ -102,7 +102,7 @@ class Dtproperties(Base):
     
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     objectid: Mapped[int]
-    property: Mapped[str] = mapped_column(String, primary_key=True)
+    property: Mapped[str]
     value: Mapped[str]
     uvalue: Mapped[str]
     lvalue: Mapped[str]
